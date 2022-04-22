@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.scss';
+import { OfficesService } from './services';
 
 function App() {
+  const officesService = new OfficesService();
+
+  useEffect(() => {
+    const getOffices = async () => {
+      const offices = await officesService.getAll();
+      console.log(offices);
+    }
+    getOffices();
+  },[])
   return (
     <div className="App">
       <header className="App-header">
