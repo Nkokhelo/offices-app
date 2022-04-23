@@ -1,11 +1,12 @@
-import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, CollectionReference, deleteDoc, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
 import { Office } from '../models/intefaces';
 import { db } from './firebaseInit';
 
 export default class OfficesService {
   public officesDoc;
   constructor() {
-    this.officesDoc = collection(db, 'offices');
+    
+    this.officesDoc = collection(db, 'offices') as CollectionReference<Office>;
   }
   async add (office: Office) {
     const officeRef = await addDoc(this.officesDoc, office);
@@ -13,7 +14,7 @@ export default class OfficesService {
   }
   async getAll () {
     const officesDocs = await getDocs(this.officesDoc);
-    return officesDocs.docs.map(d =>  {return { id: d.id, ...d.data()}});
+    return officesDocs.docs.map(d => { return {...d.data(), id: d.id} as Office})
   }
 
   async get(officeId:string) {

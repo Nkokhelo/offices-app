@@ -10,15 +10,17 @@ import { useEffect, useState } from "react";
 function OfficeModal() {
   const officeService = new OfficesService();
   const { register, handleSubmit, formState: {errors}, setValue} = useForm<Office>();
+  const [visible, setVisible] = useState(false);
   const onSubmit = handleSubmit(async (office) => {
     try {
       await officeService.add(office);
+      setVisible(false);
     } catch ({message}) {
       console.log(message);
     }
   }); 
   return (
-    <Modal show={true} fullscreen={true}>
+    <Modal show={visible} fullscreen={true}>
       <Header hasBack={true} title={"New Office"} titleCentered={true} />
       <Modal.Body className="d-flex flex-column">
           <Form className="mb-auto">
@@ -46,6 +48,7 @@ function OfficeModal() {
               <h3>Office Color</h3>
               <Col className="d-flex flex-wrap gap-4 justify-content-center" >
                 {/* {colors.map(col => <Color color={col} onClick={(col:string) => setValue("color",  col)}/>)} */}
+                <input type="hidden" {...register("color", {required : true})}/>
                 {colors.map(col => <Color color={col} setColor={(col:any) => setValue("color", col)}/>)}
               </Col>
               {errors.color && <ErrorMessage field={errors.color} />}

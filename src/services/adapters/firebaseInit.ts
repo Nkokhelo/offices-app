@@ -13,7 +13,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-connectFirestoreEmulator(db, 'localhost', 8081);
+connectFirestoreEmulator(db, 'localhost', 5001);
 
 
 export { db };

@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "name": "React",
+      "type": "pwa-msedge",
+      "version": "dev",
+      "request": "launch",
+      "preLaunchTask": "npm: start",
+      "url": "http://localhost:3000/",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

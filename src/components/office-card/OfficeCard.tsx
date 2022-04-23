@@ -8,12 +8,13 @@ import {
   PhoneIcon,
   PlainPIcon,
 } from "../../assets/icons";
+import { oCardProps } from "../../services/props/props";
 
-export default function OfficeCard({}) {
+export default function OfficeCard({office} : oCardProps) {
   return (
     <Card className="officeCard" style={{ borderLeft: "red 15px solid" }}>
-      <Header name={"Specno"} staff={5} />
-      <Body  phone={"082 364 9864"} email={"email@gmail.com"} capacity={25} address={"10 Willie Van Schoor Dr, Bo Oakdale, Cape Town, 7530"}/>
+      <Header name={office.name} staff={5} />
+      <Body  phone={office.phone} email={office.email} capacity={office.capacity} address={office.address}/>
     </Card>
   );
 }
