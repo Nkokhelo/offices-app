@@ -1,5 +1,5 @@
 import { collection, deleteDoc, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
-import { db } from '../init/firebaseInit';
+import { db } from './firebaseInit';
 
 export default class WorkersService {
   public workersDoc;

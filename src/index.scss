@@ -11,3 +11,27 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+@for $i from 1 through 100 {
+  .w-#{$i} {
+    width: $i*1% !important;
+  }
+  .h-#{$i} {
+    height: $i*1% !important;
+  }
+}
+
+.text-muted {
+  color: red !important;
+  font-size: 10px;
+  padding-left: 1%;
+}
+
+.form-control {
+
+  
+  &::placeholder {
+    font-size: 12px;
+  }
+}
+

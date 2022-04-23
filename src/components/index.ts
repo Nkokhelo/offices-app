@@ -1,3 +1,3 @@
-import OfficeCard from "./OfficeCard/OfficeCard";
+import OfficeCard from "./office-card/OfficeCard";
 
 export { OfficeCard };

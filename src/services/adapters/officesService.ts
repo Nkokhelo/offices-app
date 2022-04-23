@@ -1,10 +1,15 @@
-import { collection, deleteDoc, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
-import { db } from '../init/firebaseInit';
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
+import { Office } from '../models/intefaces';
+import { db } from './firebaseInit';
 
 export default class OfficesService {
   public officesDoc;
   constructor() {
     this.officesDoc = collection(db, 'offices');
+  }
+  async add (office: Office) {
+    const officeRef = await addDoc(this.officesDoc, office);
+    return officeRef;
   }
   async getAll () {
     const officesDocs = await getDocs(this.officesDoc);
